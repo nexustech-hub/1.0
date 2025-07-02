@@ -241,6 +241,15 @@ window.addEventListener('load', function() {
 window.addEventListener('load', function() {
     typeWriter();
     updateScrollProgress();
+    
+    // 카운터 강제 실행 (백업용)
+    setTimeout(() => {
+        const aboutSection = document.querySelector('#about');
+        if (aboutSection && !aboutSection.classList.contains('animated')) {
+            aboutSection.classList.add('animated');
+            animateCounters();
+        }
+    }, 3000); // 3초 후 강제 실행
 });
 
 // 개발자 이스터에그
