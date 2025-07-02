@@ -143,22 +143,16 @@
             animation: slideUp 1s ease-out;
         }
 
-        /* 타이핑 애니메이션 */
-        .typing-text {
-            border-right: 2px solid #667eea;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { border-color: #667eea; }
-            51%, 100% { border-color: transparent; }
-        }
-
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: slideUp 1s ease-out 0.2s both;
+            line-height: 1.5;
+            word-break: keep-all;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @keyframes slideUp {
@@ -304,6 +298,83 @@
             line-height: 1.6;
         }
 
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 5%;
+            background: #f1f5f9;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-image::before {
+            content: '🖥️';
+            font-size: 3rem;
+            opacity: 0.8;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
         /* About Section */
         .about {
             padding: 5rem 5%;
@@ -349,6 +420,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            transition: all 0.3s ease;
         }
 
         .stat-label {
@@ -485,6 +557,13 @@
         }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -496,6 +575,8 @@
 
             .hero p {
                 font-size: 1.1rem;
+                max-width: 95%;
+                line-height: 1.4;
             }
 
             .hero-buttons {
@@ -515,6 +596,11 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
         }
 
         /* Scroll Animation */
@@ -528,262 +614,17 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* 스크롤 인디케이터 */
-        .scroll-indicator {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 9999;
-        }
-
-        .scroll-progress {
-            height: 100%;
-            background: linear-gradient(90deg, #667eea, #764ba2);
-            width: 0%;
-            transition: width 0.1s ease;
-        }
-
-        /* 플로팅 액션 버튼 */
-        .floating-chat {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-            cursor: pointer;
-            z-index: 1000;
-            animation: pulse 2s infinite;
-            transition: all 0.3s ease;
-        }
-
-        .floating-chat:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); }
-            50% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.8), 0 0 0 10px rgba(102, 126, 234, 0.1); }
-            100% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); }
-        }
-
-        /* 포트폴리오 갤러리 */
-        .portfolio {
-            padding: 5rem 5%;
-            background: #f1f5f9;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .portfolio-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::before {
-            content: '🖥️';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            opacity: 0.8;
-        }
-
-        .portfolio-content {
-            padding: 1.5rem;
-        }
-
-        .portfolio-content h4 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-content p {
-            color: #64748b;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .portfolio-tags {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* 고객 후기 섹션 */
-        .testimonials {
-            padding: 5rem 5%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .testimonial-slider {
-            display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
-            overflow-x: auto;
-            padding-bottom: 1rem;
-        }
-
-        .testimonial-card {
-            min-width: 300px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .testimonial-content {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .author-info h5 {
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-        }
-
-        .author-info span {
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* 로딩 오버레이 */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0f172a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loader {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(102, 126, 234, 0.3);
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* 카운터 애니메이션 강화 */
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.3s ease;
-        }
-
-        .stat-number.counting {
-            transform: scale(1.1);
-        }
     </style>
 </head>
 <body>
-    <!-- 로딩 오버레이 -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loader"></div>
-    </div>
-
-    <!-- 스크롤 인디케이터 -->
-    <div class="scroll-indicator">
-        <div class="scroll-progress" id="scrollProgress"></div>
-    </div>
-
-    <!-- 플로팅 채팅 버튼 -->
-    <div class="floating-chat" id="floatingChat">💬</div>
     <header>
         <nav>
             <a href="#" class="logo">NEXUS TECH</a>
             <ul class="nav-links">
                 <li><a href="#home">홈</a></li>
                 <li><a href="#services">서비스</a></li>
-                <li><a href="#about">회사소개</a></li>
                 <li><a href="#portfolio">포트폴리오</a></li>
+                <li><a href="#about">회사소개</a></li>
                 <li><a href="#contact">연락처</a></li>
             </ul>
             <a href="#contact" class="cta-button">상담 문의</a>
@@ -792,11 +633,52 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1><span id="typingText">미래를 연결하는 기술</span></h1>
-            <p>혁신적인 솔루션으로 비즈니스의 디지털 트랜스포메이션을 이끌어가는 NEXUS TECH입니다.</p>
+            <h1>미래를 연결하는 기술</h1>
+            <p>비즈니스 디지털 트랜스포메이션의 최고 파트너, NEXUS TECH</p>
             <div class="hero-buttons">
                 <a href="#services" class="btn-primary">서비스 살펴보기</a>
                 <a href="#contact" class="btn-secondary">상담 요청하기</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>전문 서비스</h2>
+                <p>최신 기술과 풍부한 경험을 바탕으로 고객의 성공을 위한 맞춤형 솔루션을 제공합니다.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚀</div>
+                    <h3>웹 개발</h3>
+                    <p>반응형 웹사이트부터 복잡한 웹 애플리케이션까지, 사용자 경험을 최우선으로 하는 웹 솔루션을 제공합니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📱</div>
+                    <h3>모바일 앱</h3>
+                    <p>iOS와 Android 플랫폼을 아우르는 네이티브 및 크로스플랫폼 모바일 애플리케이션 개발 서비스입니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">☁️</div>
+                    <h3>클라우드 솔루션</h3>
+                    <p>AWS, Azure, GCP를 활용한 확장 가능하고 안정적인 클라우드 인프라 구축 및 마이그레이션 서비스입니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI/ML 솔루션</h3>
+                    <p>머신러닝과 인공지능 기술을 활용하여 비즈니스 프로세스를 자동화하고 인사이트를 제공합니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔐</div>
+                    <h3>사이버 보안</h3>
+                    <p>포괄적인 보안 솔루션으로 기업의 디지털 자산을 보호하고 컴플라이언스를 보장합니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3>데이터 분석</h3>
+                    <p>빅데이터 처리 및 분석을 통해 비즈니스 인텔리전스와 데이터 기반 의사결정을 지원합니다.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -856,92 +738,29 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2 style="color: white;">고객 후기</h2>
-                <p style="color: rgba(255,255,255,0.9);">함께 성장한 고객들의 생생한 후기를 들어보세요.</p>
-            </div>
-            <div class="testimonial-slider">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        "NEXUS TECH와 함께한 프로젝트는 정말 성공적이었습니다. 예상보다 빠른 개발 속도와 완벽한 품질에 매우 만족합니다."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">김</div>
-                        <div class="author-info">
-                            <h5>김대표</h5>
-                            <span>테크스타트업 CEO</span>
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>블록체인 플랫폼</h4>
+                        <p>탈중앙화 금융(DeFi) 서비스를 위한 블록체인 인프라 구축</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Solidity</span>
+                            <span class="tag">Web3</span>
+                            <span class="tag">DeFi</span>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        "기존 시스템을 완전히 혁신해주었습니다. 매출이 300% 증가했고, 고객 만족도도 크게 향상되었습니다."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">박</div>
-                        <div class="author-info">
-                            <h5>박부장</h5>
-                            <span>제조업체 IT팀장</span>
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>헬스케어 데이터 분석</h4>
+                        <p>의료 빅데이터 분석을 통한 개인 맞춤형 건강관리 시스템</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Healthcare</span>
+                            <span class="tag">BigData</span>
+                            <span class="tag">ML</span>
                         </div>
                     </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        "전문성과 책임감이 뛰어난 팀입니다. 복잡한 요구사항도 완벽하게 구현해주었고, 사후 지원도 훌륭합니다."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">이</div>
-                        <div class="author-info">
-                            <h5>이실장</h5>
-                            <span>대기업 디지털사업부</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>전문 서비스</h2>
-                <p>최신 기술과 풍부한 경험을 바탕으로 고객의 성공을 위한 맞춤형 솔루션을 제공합니다.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">🚀</div>
-                    <h3>웹 개발</h3>
-                    <p>반응형 웹사이트부터 복잡한 웹 애플리케이션까지, 사용자 경험을 최우선으로 하는 웹 솔루션을 제공합니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📱</div>
-                    <h3>모바일 앱</h3>
-                    <p>iOS와 Android 플랫폼을 아우르는 네이티브 및 크로스플랫폼 모바일 애플리케이션 개발 서비스입니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">☁️</div>
-                    <h3>클라우드 솔루션</h3>
-                    <p>AWS, Azure, GCP를 활용한 확장 가능하고 안정적인 클라우드 인프라 구축 및 마이그레이션 서비스입니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI/ML 솔루션</h3>
-                    <p>머신러닝과 인공지능 기술을 활용하여 비즈니스 프로세스를 자동화하고 인사이트를 제공합니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🔐</div>
-                    <h3>사이버 보안</h3>
-                    <p>포괄적인 보안 솔루션으로 기업의 디지털 자산을 보호하고 컴플라이언스를 보장합니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📊</div>
-                    <h3>데이터 분석</h3>
-                    <p>빅데이터 처리 및 분석을 통해 비즈니스 인텔리전스와 데이터 기반 의사결정을 지원합니다.</p>
                 </div>
             </div>
         </div>
@@ -969,250 +788,4 @@
                         </div>
                         <div class="stat fade-in">
                             <div class="stat-number">24/7</div>
-                            <div class="stat-label">기술 지원</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual fade-in"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content fade-in">
-                <h2>프로젝트 상담</h2>
-                <p>새로운 프로젝트를 시작할 준비가 되셨나요? 언제든지 연락주세요.</p>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="회사명" required>
-                        <input type="text" placeholder="담당자명" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="이메일" required>
-                        <input type="tel" placeholder="연락처" required>
-                    </div>
-                    <textarea placeholder="프로젝트에 대해 간단히 설명해주세요..." required></textarea>
-                    <button type="submit" class="btn-primary">상담 요청하기</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>NEXUS TECH</h3>
-                <p>미래를 연결하는 기술로<br>고객의 성공을 만들어갑니다.</p>
-            </div>
-            <div class="footer-section">
-                <h3>연락처</h3>
-                <p>서울시 강남구 테헤란로 123<br>
-                전화: 02-1234-5678<br>
-                이메일: info@nexustech.co.kr</p>
-            </div>
-            <div class="footer-section">
-                <h3>서비스</h3>
-                <p><a href="#services">웹 개발</a><br>
-                <a href="#services">모바일 앱</a><br>
-                <a href="#services">클라우드 솔루션</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 NEXUS TECH. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // 로딩 화면
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.getElementById('loadingOverlay').classList.add('hidden');
-            }, 1500);
-        });
-
-        // 타이핑 애니메이션
-        function typeWriter() {
-            const text = "미래를 연결하는 기술";
-            const element = document.getElementById('typingText');
-            element.innerHTML = '';
-            let i = 0;
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, 100);
-                } else {
-                    element.classList.add('typing-text');
-                }
-            }
-            
-            setTimeout(type, 2000); // 로딩 후 시작
-        }
-
-        // 스크롤 인디케이터
-        function updateScrollProgress() {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercentage = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = scrollPercentage + '%';
-        }
-
-        // 카운터 애니메이션
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-number');
-            const targets = ['500+', '98%', '50+', '24/7'];
-            
-            counters.forEach((counter, index) => {
-                const target = targets[index];
-                const isPercentage = target.includes('%');
-                const isPlus = target.includes('+');
-                const numValue = parseInt(target);
-                
-                let current = 0;
-                const increment = numValue / 50;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= numValue) {
-                        current = numValue;
-                        clearInterval(timer);
-                    }
-                    
-                    let displayValue = Math.floor(current);
-                    if (isPercentage) displayValue += '%';
-                    if (isPlus && current >= numValue) displayValue += '+';
-                    if (target === '24/7') displayValue = '24/7';
-                    
-                    counter.textContent = displayValue;
-                    counter.classList.add('counting');
-                    
-                    setTimeout(() => counter.classList.remove('counting'), 100);
-                }, 50);
-            });
-        }
-
-        // 플로팅 채팅 버튼
-        document.getElementById('floatingChat').addEventListener('click', function() {
-            this.style.transform = 'scale(0.9)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-                alert('💬 안녕하세요! 프로젝트 상담을 도와드리겠습니다.\n\n📞 전화: 02-1234-5678\n📧 이메일: info@nexustech.co.kr\n\n지금 바로 연락주세요!');
-            }, 150);
-        });
-
-        // 포트폴리오 아이템 클릭 이벤트
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const title = this.querySelector('h4').textContent;
-                alert(`🎯 ${title}\n\n이런 수준의 프로젝트를 개발해드릴 수 있습니다!\n상세한 상담을 원하시면 연락주세요.`);
-            });
-        });
-
-        // Smooth scrolling 강화
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerHeight = 80;
-                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // 향상된 스크롤 애니메이션
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // 통계 섹션이 보이면 카운터 애니메이션 시작
-                    if (entry.target.querySelector('.stat-number') && !entry.target.classList.contains('animated')) {
-                        entry.target.classList.add('animated');
-                        setTimeout(animateCounters, 300);
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // 관찰 대상 요소들 등록
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 스크롤 이벤트 리스너
-        window.addEventListener('scroll', function() {
-            updateScrollProgress();
-            
-            // 헤더 배경 변경
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(15, 23, 42, 0.98)';
-            } else {
-                header.style.background = 'rgba(15, 23, 42, 0.95)';
-            }
-        });
-
-        // 폼 제출 강화
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const button = this.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
-            
-            button.textContent = '전송 중...';
-            button.style.opacity = '0.7';
-            
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.style.opacity = '1';
-                alert('✅ 상담 요청이 성공적으로 접수되었습니다!\n\n빠른 시일 내에 담당자가 연락드리겠습니다.\n감사합니다! 🙏');
-            }, 2000);
-        });
-
-        // 버튼 로딩 애니메이션 강화
-        document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                if (this.classList.contains('loading')) return;
-                
-                // 폼 제출 버튼이 아닌 경우에만 애니메이션
-                if (this.type !== 'submit') {
-                    this.classList.add('loading');
-                    this.style.opacity = '0.8';
-                    
-                    setTimeout(() => {
-                        this.classList.remove('loading');
-                        this.style.opacity = '1';
-                    }, 300);
-                }
-            });
-        });
-
-        // 초기화
-        window.addEventListener('load', function() {
-            typeWriter();
-            updateScrollProgress();
-        });
-
-        // 키보드 단축키 (개발자용 이스터에그)
-        document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.shiftKey && e.key === 'D') {
-                alert('🚀 NEXUS TECH 개발팀이 만든 웹사이트입니다!\n\n이런 퀄리티의 사이트를 원하시나요?\n지금 바로 상담받아보세요!');
-            }
-        });
-    </script>
-</body>
-</html>
+                            <div class="stat-label">기술 지원
