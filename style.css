@@ -328,9 +328,9 @@ nav {
     padding: 0 1.5rem;
 }
 
-/* 모바일 최적화된 제목 - 순수 자간만 축소 */
+/* 모바일 최적화된 제목 - 폰트 사이즈 증가 + 자간 보통 */
 .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-size: clamp(2.8rem, 6.5vw, 4rem);
     font-weight: 700;
     margin-bottom: 1rem;
     background: linear-gradient(135deg, #fff 0%, #667eea 100%);
@@ -339,26 +339,26 @@ nav {
     background-clip: text;
     animation: slideUp 1s ease-out;
     line-height: 1.2;
-    letter-spacing: -0.02em;
+    letter-spacing: 0em;
     white-space: nowrap;
 }
 
-/* 모바일 전용 자간만 축소 - 비율 변경 없음 */
+/* 모바일 전용 자간 적당히 축소 */
 @media screen and (max-width: 768px) {
     .hero h1 {
-        letter-spacing: -0.15em !important;
+        letter-spacing: -0.05em !important;
     }
 }
 
 @media screen and (max-width: 480px) {
     .hero h1 {
-        letter-spacing: -0.2em !important;
+        letter-spacing: -0.08em !important;
     }
 }
 
 @media screen and (max-width: 380px) {
     .hero h1 {
-        letter-spacing: -0.25em !important;
+        letter-spacing: -0.1em !important;
     }
 }
 
