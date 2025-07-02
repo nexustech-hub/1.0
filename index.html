@@ -4,999 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXUS TECH - 미래를 연결하는 기술</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #667eea;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* 무채색 우주 배경 */
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 70%, rgba(128, 128, 128, 0.05) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(192, 192, 192, 0.02) 0%, transparent 70%),
-                radial-gradient(circle at 30% 80%, rgba(169, 169, 169, 0.04) 0%, transparent 40%);
-            animation: cosmicPulse 15s ease-in-out infinite alternate;
-        }
-
-        @keyframes cosmicPulse {
-            0% { opacity: 0.6; transform: scale(1) rotate(0deg); }
-            100% { opacity: 0.9; transform: scale(1.05) rotate(2deg); }
-        }
-
-        /* 무채색 성운 아티팩트 */
-        .connection-artifacts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .artifact {
-            position: absolute;
-            animation: galaxyRotate 40s linear infinite;
-            filter: blur(0.5px);
-        }
-
-        .artifact::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, 
-                rgba(255, 255, 255, 0.15) 0%, 
-                rgba(192, 192, 192, 0.12) 30%, 
-                rgba(128, 128, 128, 0.08) 60%, 
-                transparent 80%);
-            border-radius: 50%;
-            animation: nebulaGlow 8s ease-in-out infinite alternate;
-        }
-
-        .artifact::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 70%;
-            height: 70%;
-            transform: translate(-50%, -50%);
-            background: radial-gradient(circle, 
-                rgba(255, 255, 255, 0.4) 0%, 
-                rgba(220, 220, 220, 0.3) 20%, 
-                rgba(169, 169, 169, 0.2) 40%, 
-                transparent 70%);
-            border-radius: 50%;
-            animation: stellarCore 6s ease-in-out infinite alternate;
-        }
-
-        .artifact-1 {
-            width: 200px;
-            height: 120px;
-            top: 10%;
-            left: 5%;
-            animation-duration: 50s;
-            transform-origin: center;
-        }
-
-        .artifact-2 {
-            width: 150px;
-            height: 90px;
-            top: 60%;
-            right: 8%;
-            animation-duration: 45s;
-            animation-direction: reverse;
-        }
-
-        .artifact-3 {
-            width: 100px;
-            height: 60px;
-            top: 30%;
-            right: 20%;
-            animation-duration: 55s;
-        }
-
-        /* 무채색 애니메이션 */
-        @keyframes galaxyRotate {
-            0% { transform: rotate(0deg) scale(1); }
-            50% { transform: rotate(180deg) scale(1.1); }
-            100% { transform: rotate(360deg) scale(1); }
-        }
-
-        @keyframes nebulaGlow {
-            0% { opacity: 0.4; transform: scale(1); }
-            100% { opacity: 0.8; transform: scale(1.2); }
-        }
-
-        @keyframes stellarCore {
-            0% { opacity: 0.6; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.3) rotate(360deg); }
-        }
-
-        /* 간소화된 중앙 코어 */
-        .central-hub {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .hub-core {
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .hub-core::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, 
-                rgba(255, 255, 255, 0.6) 0%, 
-                rgba(220, 220, 220, 0.4) 40%, 
-                transparent 80%);
-            border-radius: 50%;
-            animation: gentlePulse 4s ease-in-out infinite;
-        }
-
-        .hub-core::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 8px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-            animation: coreGlow 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes gentlePulse {
-            0%, 100% { 
-                transform: scale(1); 
-                opacity: 0.6; 
-            }
-            50% { 
-                transform: scale(1.3); 
-                opacity: 0.9; 
-            }
-        }
-
-        @keyframes coreGlow {
-            0% { 
-                box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-                transform: translate(-50%, -50%) scale(1);
-            }
-            100% { 
-                box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-        }
-
-        /* 무채색 별들 */
-        .floating-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: radial-gradient(circle, 
-                rgba(255, 255, 255, 1) 0%, 
-                rgba(220, 220, 220, 0.8) 40%, 
-                transparent 70%);
-            border-radius: 50%;
-            animation: starTwinkle 4s ease-in-out infinite;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-        }
-
-        .particle:nth-child(1) { top: 15%; left: 25%; animation-delay: 0s; }
-        .particle:nth-child(2) { top: 35%; left: 75%; animation-delay: 0.8s; }
-        .particle:nth-child(3) { top: 55%; left: 15%; animation-delay: 1.6s; }
-        .particle:nth-child(4) { top: 75%; left: 65%; animation-delay: 2.4s; }
-        .particle:nth-child(5) { top: 25%; left: 85%; animation-delay: 3.2s; }
-        .particle:nth-child(6) { top: 65%; left: 35%; animation-delay: 1.2s; }
-        .particle:nth-child(7) { top: 85%; left: 45%; animation-delay: 2s; }
-        .particle:nth-child(8) { top: 5%; left: 55%; animation-delay: 2.8s; }
-
-        @keyframes starTwinkle {
-            0%, 100% { 
-                opacity: 0.3; 
-                transform: scale(1);
-                box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
-            }
-            50% { 
-                opacity: 1; 
-                transform: scale(1.5);
-                box-shadow: 0 0 12px rgba(255, 255, 255, 1);
-            }
-        }
-
-        .hero-content {
-            text-align: center;
-            color: white;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 1.5rem;
-        }
-
-        /* 모바일 최적화된 제목 */
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, #667eea 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideUp 1s ease-out;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-            white-space: nowrap;
-        }
-
-        /* 모바일 전용 자간 축소 - 크기는 유지 */
-        @media screen and (max-width: 768px) {
-            .hero h1 {
-                letter-spacing: -0.2em !important;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .hero h1 {
-                font-size: clamp(2.3rem, 7vw, 3rem) !important;
-                letter-spacing: -0.25em !important;
-            }
-        }
-
-        @media screen and (max-width: 380px) {
-            .hero h1 {
-                font-size: clamp(2.1rem, 8vw, 2.8rem) !important;
-                letter-spacing: -0.3em !important;
-            }
-        }
-
-        /* 타이핑 애니메이션 */
-        .typing-text {
-            border-right: 2px solid #667eea;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { border-color: #667eea; }
-            51%, 100% { border-color: transparent; }
-        }
-
-        .hero p {
-            font-size: clamp(0.9rem, 2.8vw, 1.3rem);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: slideUp 1s ease-out 0.2s both;
-            line-height: 1.5;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: slideUp 1s ease-out 0.4s both;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 0.9rem 1.8rem;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: clamp(0.85rem, 2.2vw, 1.1rem);
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            padding: 0.9rem 1.8rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: clamp(0.85rem, 2.2vw, 1.1rem);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-3px);
-        }
-
-        /* Services Section */
-        .services {
-            padding: 5rem 5%;
-            background: #f8fafc;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: clamp(2rem, 5vw, 2.5rem);
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-
-        .section-title p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            color: #64748b;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* 개선된 서비스 그리드 */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            justify-items: center;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            max-width: 350px;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .service-card h3 {
-            font-size: clamp(1.2rem, 4vw, 1.5rem);
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 1rem;
-            flex-shrink: 0;
-        }
-
-        .service-card p {
-            color: #64748b;
-            line-height: 1.6;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            flex-grow: 1;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .form-group {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .service-card {
-                max-width: 100%;
-                padding: 2rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .central-hub {
-                width: 30px;
-                height: 30px;
-            }
-
-            /* 모바일에서 우주 아티팩트 크기 조정 */
-            .artifact-1 {
-                width: 120px;
-                height: 80px;
-            }
-
-            .artifact-2 {
-                width: 90px;
-                height: 60px;
-            }
-
-            .artifact-3 {
-                width: 70px;
-                height: 45px;
-            }
-
-            .testimonial-card {
-                min-width: 280px;
-                padding: 1.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .service-card {
-                padding: 1.5rem;
-                min-height: 240px;
-            }
-
-            .service-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-        }
-
-        .footer-bottom {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-        }
-                width: 30px;
-                height: 30px;
-            }
-
-            /* 모바일에서 우주 아티팩트 크기 조정 */
-            .artifact-1 {
-                width: 120px;
-                height: 80px;
-            }
-
-            .artifact-2 {
-                width: 90px;
-                height: 60px;
-            }
-
-            .artifact-3 {
-                width: 70px;
-                height: 45px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .service-card {
-                padding: 1.5rem;
-                min-height: 240px;
-            }
-
-            .service-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-        }
-
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 5%;
-            background: white;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: clamp(2rem, 5vw, 2.5rem);
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text p {
-            color: #64748b;
-            font-size: clamp(1rem, 2.5vw, 1.1rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: clamp(2rem, 5vw, 2.5rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            color: #64748b;
-            font-weight: 500;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-        }
-
-        .about-visual {
-            position: relative;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .about-visual::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><circle cx="30" cy="30" r="10" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="70" cy="70" r="15" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/></svg>');
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding: 5rem 5%;
-            background: #f1f5f9;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            justify-items: center;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            width: 100%;
-            max-width: 380px;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .portfolio-image {
-            height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .portfolio-image::before {
-            content: '🖥️';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            opacity: 0.8;
-        }
-
-        .portfolio-content {
-            padding: 1.5rem;
-        }
-
-        .portfolio-content h4 {
-            font-size: clamp(1.1rem, 3vw, 1.3rem);
-            font-weight: 600;
-            color: #1e293b;
-            margin-bottom: 0.5rem;
-        }
-
-        .portfolio-content p {
-            color: #64748b;
-            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
-            line-height: 1.5;
-        }
-
-        .portfolio-tags {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: clamp(0.7rem, 2vw, 0.8rem);
-            font-weight: 500;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            padding: 5rem 5%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .testimonial-slider {
-            display: flex;
-            gap: 2rem;
-            margin-top: 3rem;
-            overflow-x: auto;
-            padding-bottom: 1rem;
-        }
-
-        .testimonial-card {
-            min-width: 300px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .testimonial-content {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .author-info h5 {
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-        }
-
-        .author-info span {
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-            opacity: 0.8;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 5rem 5%;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-        }
-
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact h2 {
-            font-size: clamp(2rem, 5vw, 2.5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .contact p {
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .contact-form {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .form-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 1rem;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            transition: all 0.3s ease;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .contact-form textarea {
-            grid-column: 1 / -1;
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: white;
-            text-align: center;
-            padding: 2rem 5%;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #667eea;
-            font-size: clamp(1rem, 3vw, 1.2rem);
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            line-height: 1.6;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-        }
-
-        .footer-section a:hover {
-            color: #667eea;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 로딩 오버레이 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- 스크롤 인디케이터 -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- 플로팅 채팅 버튼 -->
+    <div class="floating-chat" id="floatingChat">💬</div>
+    
     <header>
         <nav>
             <a href="#" class="logo">NEXUS TECH</a>
             <ul class="nav-links">
                 <li><a href="#home">홈</a></li>
                 <li><a href="#services">서비스</a></li>
+                <li><a href="#about">회사소개</a></li>
+                <li><a href="#portfolio">포트폴리오</a></li>
                 <li><a href="#contact">연락처</a></li>
             </ul>
             <a href="#contact" class="cta-button">상담 문의</a>
@@ -1034,78 +65,6 @@
             <div class="hero-buttons">
                 <a href="#services" class="btn-primary">서비스 살펴보기</a>
                 <a href="#contact" class="btn-secondary">상담 요청하기</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-title fade-in">
-                <h2>전문 서비스</h2>
-                <p>최신 기술과 풍부한 경험을 바탕으로 고객의 성공을 위한 맞춤형 솔루션을 제공합니다.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">🚀</div>
-                    <h3>웹 개발</h3>
-                    <p>반응형 웹사이트부터 복잡한 웹 애플리케이션까지, 사용자 경험을 최우선으로 하는 웹 솔루션을 제공합니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📱</div>
-                    <h3>모바일 앱</h3>
-                    <p>iOS와 Android 플랫폼을 아우르는 네이티브 및 크로스플랫폼 모바일 애플리케이션 개발 서비스입니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">☁️</div>
-                    <h3>클라우드 솔루션</h3>
-                    <p>AWS, Azure, GCP를 활용한 확장 가능하고 안정적인 클라우드 인프라 구축 및 마이그레이션 서비스입니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI/ML 솔루션</h3>
-                    <p>머신러닝과 인공지능 기술을 활용하여 비즈니스 프로세스를 자동화하고 인사이트를 제공합니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">🔐</div>
-                    <h3>사이버 보안</h3>
-                    <p>포괄적인 보안 솔루션으로 기업의 디지털 자산을 보호하고 컴플라이언스를 보장합니다.</p>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📊</div>
-                    <h3>데이터 분석</h3>
-                    <p>빅데이터 처리 및 분석을 통해 비즈니스 인텔리전스와 데이터 기반 의사결정을 지원합니다.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <h2>혁신을 선도하는 기술 파트너</h2>
-                    <p>2015년 설립 이래 NEXUS TECH는 국내외 다양한 기업들과 함께 성장해왔습니다. 우리는 단순한 기술 제공을 넘어서, 고객의 비즈니스 목표 달성을 위한 전략적 파트너로서의 역할을 수행합니다.</p>
-                    <p>최신 기술 트렌드를 선도하며, 고객의 요구사항에 맞는 맞춤형 솔루션을 제공하여 디지털 시대의 경쟁 우위를 확보할 수 있도록 지원합니다.</p>
-                    <div class="stats">
-                        <div class="stat fade-in">
-                            <div class="stat-number">500+</div>
-                            <div class="stat-label">완료 프로젝트</div>
-                        </div>
-                        <div class="stat fade-in">
-                            <div class="stat-number">98%</div>
-                            <div class="stat-label">고객 만족도</div>
-                        </div>
-                        <div class="stat fade-in">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">전문 개발자</div>
-                        </div>
-                        <div class="stat fade-in">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">기술 지원</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-visual fade-in"></div>
             </div>
         </div>
     </section>
@@ -1216,6 +175,78 @@
         </div>
     </section>
 
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>전문 서비스</h2>
+                <p>최신 기술과 풍부한 경험을 바탕으로 고객의 성공을 위한 맞춤형 솔루션을 제공합니다.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚀</div>
+                    <h3>웹 개발</h3>
+                    <p>반응형 웹사이트부터 복잡한 웹 애플리케이션까지, 사용자 경험을 최우선으로 하는 웹 솔루션을 제공합니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📱</div>
+                    <h3>모바일 앱</h3>
+                    <p>iOS와 Android 플랫폼을 아우르는 네이티브 및 크로스플랫폼 모바일 애플리케이션 개발 서비스입니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">☁️</div>
+                    <h3>클라우드 솔루션</h3>
+                    <p>AWS, Azure, GCP를 활용한 확장 가능하고 안정적인 클라우드 인프라 구축 및 마이그레이션 서비스입니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI/ML 솔루션</h3>
+                    <p>머신러닝과 인공지능 기술을 활용하여 비즈니스 프로세스를 자동화하고 인사이트를 제공합니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔐</div>
+                    <h3>사이버 보안</h3>
+                    <p>포괄적인 보안 솔루션으로 기업의 디지털 자산을 보호하고 컴플라이언스를 보장합니다.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3>데이터 분석</h3>
+                    <p>빅데이터 처리 및 분석을 통해 비즈니스 인텔리전스와 데이터 기반 의사결정을 지원합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>혁신을 선도하는 기술 파트너</h2>
+                    <p>2015년 설립 이래 NEXUS TECH는 국내외 다양한 기업들과 함께 성장해왔습니다. 우리는 단순한 기술 제공을 넘어서, 고객의 비즈니스 목표 달성을 위한 전략적 파트너로서의 역할을 수행합니다.</p>
+                    <p>최신 기술 트렌드를 선도하며, 고객의 요구사항에 맞는 맞춤형 솔루션을 제공하여 디지털 시대의 경쟁 우위를 확보할 수 있도록 지원합니다.</p>
+                    <div class="stats">
+                        <div class="stat fade-in">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">완료 프로젝트</div>
+                        </div>
+                        <div class="stat fade-in">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">고객 만족도</div>
+                        </div>
+                        <div class="stat fade-in">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">전문 개발자</div>
+                        </div>
+                        <div class="stat fade-in">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">기술 지원</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual fade-in"></div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-content fade-in">
@@ -1261,50 +292,6 @@
         </div>
     </footer>
 
-    <script>
-        // 타이핑 애니메이션
-        function typeWriter() {
-            const text = "미래를 연결하는 기술";
-            const element = document.getElementById('typingText');
-            element.innerHTML = '';
-            let i = 0;
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, 80); // 80ms로 60타 수준
-                } else {
-                    element.classList.add('typing-text');
-                }
-            }
-            
-            setTimeout(type, 1000);
-        }
-
-        // 향상된 스크롤 애니메이션
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        // 관찰 대상 요소들 등록
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // 초기화
-        window.addEventListener('load', function() {
-            typeWriter();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
