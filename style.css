@@ -692,6 +692,20 @@ nav {
     font-weight: 700;
     color: #1e293b;
     margin-bottom: 1.5rem;
+    letter-spacing: -0.1em;
+}
+
+/* 모바일에서 더 좁게 */
+@media screen and (max-width: 768px) {
+    .about-text h2 {
+        letter-spacing: -0.15em !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-text h2 {
+        letter-spacing: -0.2em !important;
+    }
 }
 
 .about-text p {
