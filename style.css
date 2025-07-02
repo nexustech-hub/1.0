@@ -697,15 +697,22 @@ nav {
 /* 모바일 전용 자간 + 폰트 조정 */
 @media screen and (max-width: 768px) {
     .about-text h2 {
-        font-size: clamp(1.8rem, 4.5vw, 2.2rem) !important;
-        letter-spacing: -0.15em !important;
+        font-size: clamp(1.6rem, 4vw, 2rem) !important;
+        letter-spacing: -0.4em !important;
     }
 }
 
 @media screen and (max-width: 480px) {
     .about-text h2 {
-        font-size: clamp(1.6rem, 4vw, 2rem) !important;
-        letter-spacing: -0.2em !important;
+        font-size: clamp(1.4rem, 3.5vw, 1.8rem) !important;
+        letter-spacing: -0.45em !important;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .about-text h2 {
+        font-size: clamp(1.2rem, 3vw, 1.6rem) !important;
+        letter-spacing: -0.5em !important;
     }
 }
 
