@@ -7,7 +7,42 @@
     <link rel="stylesheet" href="style.css">
 </head>
     <script src="script.js"></script>
+<script>
+// 카운터 애니메이션 (임시)
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number');
+    const targets = ['500+', '98%', '50+', '24/7'];
+    
+    counters.forEach((counter, index) => {
+        const target = targets[index];
+        if (target === '24/7') {
+            counter.textContent = '24/7';
+            return;
+        }
+        
+        const numValue = parseInt(target);
+        let current = 0;
+        const increment = numValue / 50;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= numValue) {
+                current = numValue;
+                clearInterval(timer);
+            }
+            
+            let displayValue = Math.floor(current);
+            if (target.includes('%')) displayValue += '%';
+            if (target.includes('+')) displayValue += '+';
+            
+            counter.textContent = displayValue;
+        }, 50);
+    });
+}
 
+// 3초 후 실행
+setTimeout(animateCounters, 3000);
+</script>
 <body>
     <!-- 로딩 오버레이 -->
     <div class="loading-overlay" id="loadingOverlay">
