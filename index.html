@@ -99,7 +99,7 @@
             box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
         }
 
-        /* Hero Section */
+        /* Hero Section with Enhanced Visual Elements */
         .hero {
             height: 100vh;
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
@@ -110,18 +110,290 @@
             overflow: hidden;
         }
 
+        /* 무채색 우주 배경 */
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23334155" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: float 20s ease-in-out infinite;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(128, 128, 128, 0.05) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(192, 192, 192, 0.02) 0%, transparent 70%),
+                radial-gradient(circle at 30% 80%, rgba(169, 169, 169, 0.04) 0%, transparent 40%);
+            animation: cosmicPulse 15s ease-in-out infinite alternate;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
+        @keyframes cosmicPulse {
+            0% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+            100% { opacity: 0.9; transform: scale(1.05) rotate(2deg); }
+        }
+
+        /* 무채색 성운 아티팩트 */
+        .connection-artifacts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .artifact {
+            position: absolute;
+            animation: galaxyRotate 40s linear infinite;
+            filter: blur(0.5px);
+        }
+
+        .artifact::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, 
+                rgba(255, 255, 255, 0.15) 0%, 
+                rgba(192, 192, 192, 0.12) 30%, 
+                rgba(128, 128, 128, 0.08) 60%, 
+                transparent 80%);
+            border-radius: 50%;
+            animation: nebulaGlow 8s ease-in-out infinite alternate;
+        }
+
+        .artifact::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 70%;
+            height: 70%;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.4) 0%, 
+                rgba(220, 220, 220, 0.3) 20%, 
+                rgba(169, 169, 169, 0.2) 40%, 
+                transparent 70%);
+            border-radius: 50%;
+            animation: stellarCore 6s ease-in-out infinite alternate;
+        }
+
+        .artifact-1 {
+            width: 200px;
+            height: 120px;
+            top: 10%;
+            left: 5%;
+            animation-duration: 50s;
+            transform-origin: center;
+        }
+
+        .artifact-2 {
+            width: 150px;
+            height: 90px;
+            top: 60%;
+            right: 8%;
+            animation-duration: 45s;
+            animation-direction: reverse;
+        }
+
+        .artifact-3 {
+            width: 100px;
+            height: 60px;
+            top: 30%;
+            right: 20%;
+            animation-duration: 55s;
+        }
+
+        /* 무채색 애니메이션 */
+        @keyframes galaxyRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+
+        @keyframes nebulaGlow {
+            0% { opacity: 0.4; transform: scale(1); }
+            100% { opacity: 0.8; transform: scale(1.2); }
+        }
+
+        @keyframes stellarCore {
+            0% { opacity: 0.6; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.3) rotate(360deg); }
+        }
+
+        /* 빠른 굵은 혜성 */
+        .comets {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .comet {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 50%, transparent 100%);
+            border-radius: 50%;
+            opacity: 0;
+            animation: meteorFlash 2s linear infinite;
+            filter: blur(0.5px);
+        }
+
+        .comet::before {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%,
+                rgba(255, 255, 255, 0.2) 30%, 
+                rgba(255, 255, 255, 0.6) 60%,
+                rgba(255, 255, 255, 0.9) 85%, 
+                rgba(255, 255, 255, 1) 100%);
+            top: 50%;
+            right: 8px;
+            transform: translateY(-50%);
+            border-radius: 2px;
+            filter: blur(0.3px);
+        }
+
+        .comet-1 {
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .comet-2 {
+            bottom: 60%;
+            left: 80%;
+            animation-delay: 1s;
+        }
+
+        @keyframes meteorFlash {
+            0% {
+                opacity: 0;
+                transform: translateX(0px) translateY(0px) scale(0.5);
+            }
+            15% {
+                opacity: 1;
+                transform: translateX(150px) translateY(-150px) scale(1);
+            }
+            85% {
+                opacity: 1;
+                transform: translateX(400px) translateY(-400px) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(500px) translateY(-500px) scale(0.3);
+            }
+        }
+
+        /* 간소화된 중앙 코어 */
+        .central-hub {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .hub-core {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hub-core::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 0.6) 0%, 
+                rgba(220, 220, 220, 0.4) 40%, 
+                transparent 80%);
+            border-radius: 50%;
+            animation: gentlePulse 4s ease-in-out infinite;
+        }
+
+        .hub-core::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            animation: coreGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes gentlePulse {
+            0%, 100% { 
+                transform: scale(1); 
+                opacity: 0.6; 
+            }
+            50% { 
+                transform: scale(1.3); 
+                opacity: 0.9; 
+            }
+        }
+
+        @keyframes coreGlow {
+            0% { 
+                box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% { 
+                box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* 무채색 별들 */
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, 
+                rgba(255, 255, 255, 1) 0%, 
+                rgba(220, 220, 220, 0.8) 40%, 
+                transparent 70%);
+            border-radius: 50%;
+            animation: starTwinkle 4s ease-in-out infinite;
+            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+        }
+
+        .particle:nth-child(1) { top: 15%; left: 25%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 35%; left: 75%; animation-delay: 0.8s; }
+        .particle:nth-child(3) { top: 55%; left: 15%; animation-delay: 1.6s; }
+        .particle:nth-child(4) { top: 75%; left: 65%; animation-delay: 2.4s; }
+        .particle:nth-child(5) { top: 25%; left: 85%; animation-delay: 3.2s; }
+        .particle:nth-child(6) { top: 65%; left: 35%; animation-delay: 1.2s; }
+        .particle:nth-child(7) { top: 85%; left: 45%; animation-delay: 2s; }
+        .particle:nth-child(8) { top: 5%; left: 55%; animation-delay: 2.8s; }
+
+        @keyframes starTwinkle {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scale(1);
+                box-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.5);
+                box-shadow: 0 0 12px rgba(255, 255, 255, 1);
+            }
         }
 
         .hero-content {
@@ -133,7 +405,7 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #fff 0%, #667eea 100%);
@@ -143,8 +415,18 @@
             animation: slideUp 1s ease-out;
         }
 
+        .typing-text {
+            border-right: 2px solid #667eea;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: #667eea; }
+            51%, 100% { border-color: transparent; }
+        }
+
         .hero p {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 3vw, 1.3rem);
             margin-bottom: 2rem;
             opacity: 0.9;
             animation: slideUp 1s ease-out 0.2s both;
@@ -177,7 +459,7 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
@@ -190,7 +472,7 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
         }
@@ -206,7 +488,7 @@
             transform: translateY(-3px);
         }
 
-        /* Services Section */
+        /* Enhanced Services Section */
         .services {
             padding: 5rem 5%;
             background: #f8fafc;
@@ -223,24 +505,26 @@
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 1rem;
         }
 
         .section-title p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             color: #64748b;
             max-width: 600px;
             margin: 0 auto;
         }
 
+        /* 개선된 서비스 그리드 - 완벽한 반응형 */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+            justify-items: center;
         }
 
         .service-card {
@@ -251,6 +535,11 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            width: 100%;
+            max-width: 350px;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card::before {
@@ -279,18 +568,22 @@
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
             color: white;
+            flex-shrink: 0;
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             font-weight: 600;
             color: #1e293b;
             margin-bottom: 1rem;
+            flex-shrink: 0;
         }
 
         .service-card p {
             color: #64748b;
             line-height: 1.6;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            flex-grow: 1;
         }
 
         /* About Section */
@@ -307,7 +600,7 @@
         }
 
         .about-text h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 1.5rem;
@@ -315,7 +608,7 @@
 
         .about-text p {
             color: #64748b;
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             margin-bottom: 1.5rem;
             line-height: 1.7;
         }
@@ -332,7 +625,7 @@
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 700;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             -webkit-background-clip: text;
@@ -343,6 +636,7 @@
         .stat-label {
             color: #64748b;
             font-weight: 500;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .about-visual {
@@ -367,6 +661,145 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 5%;
+            background: #f1f5f9;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            justify-items: center;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-image::before {
+            content: '🖥️';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            opacity: 0.8;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-content h4 {
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-content p {
+            color: #64748b;
+            font-size: clamp(0.85rem, 2.5vw, 0.9rem);
+            line-height: 1.5;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            font-weight: 500;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .testimonial-card {
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .author-info h5 {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .author-info span {
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            opacity: 0.8;
+        }
+
         /* Contact Section */
         .contact {
             padding: 5rem 5%;
@@ -381,13 +814,13 @@
         }
 
         .contact h2 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
         }
 
         .contact p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             opacity: 0.9;
             margin-bottom: 2rem;
         }
@@ -411,7 +844,7 @@
             border-radius: 10px;
             background: rgba(255, 255, 255, 0.05);
             color: white;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             transition: all 0.3s ease;
         }
 
@@ -454,6 +887,7 @@
         .footer-section h3 {
             margin-bottom: 1rem;
             color: #667eea;
+            font-size: clamp(1rem, 3vw, 1.2rem);
         }
 
         .footer-section p,
@@ -461,6 +895,7 @@
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             line-height: 1.6;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
         .footer-section a:hover {
@@ -471,20 +906,13 @@
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: rgba(255, 255, 255, 0.5);
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
             }
 
             .hero-buttons {
@@ -501,8 +929,69 @@
                 grid-template-columns: 1fr;
             }
 
-            .section-title h2 {
-                font-size: 2rem;
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .service-card {
+                max-width: 100%;
+                padding: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* 모바일에서 우주 아티팩트 크기 조정 */
+            .artifact-1 {
+                width: 120px;
+                height: 80px;
+            }
+
+            .artifact-2 {
+                width: 90px;
+                height: 60px;
+            }
+
+            .artifact-3 {
+                width: 70px;
+                height: 45px;
+            }
+
+            .central-hub {
+                width: 30px;
+                height: 30px;
+            }
+
+            /* 모바일에서 우주 먼지 길이 조정 */
+            .line-1 { width: 250px; }
+            .line-2 { width: 200px; }
+            .line-3 { width: 150px; }
+            .line-4 { width: 180px; }
+            .line-5 { width: 120px; }
+        }
+
+        @media (max-width: 480px) {
+            .service-card {
+                padding: 1.5rem;
+                min-height: 240px;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .testimonial-card {
+                min-width: 280px;
+                padding: 1.5rem;
             }
         }
 
@@ -517,9 +1006,111 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* 스크롤 인디케이터 */
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 9999;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* 플로팅 액션 버튼 */
+        .floating-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .floating-chat:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); }
+            50% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.8), 0 0 0 10px rgba(102, 126, 234, 0.1); }
+            100% { box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4); }
+        }
+
+        /* 로딩 오버레이 */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 카운터 애니메이션 강화 */
+        .stat-number.counting {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
+    <!-- 로딩 오버레이 -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
+
+    <!-- 스크롤 인디케이터 -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- 플로팅 채팅 버튼 -->
+    <div class="floating-chat" id="floatingChat">💬</div>
+    
     <header>
         <nav>
             <a href="#" class="logo">NEXUS TECH</a>
@@ -527,6 +1118,7 @@
                 <li><a href="#home">홈</a></li>
                 <li><a href="#services">서비스</a></li>
                 <li><a href="#about">회사소개</a></li>
+                <li><a href="#portfolio">포트폴리오</a></li>
                 <li><a href="#contact">연락처</a></li>
             </ul>
             <a href="#contact" class="cta-button">상담 문의</a>
@@ -534,8 +1126,32 @@
     </header>
 
     <section id="home" class="hero">
+        <!-- 연결 아티팩트들 -->
+        <div class="connection-artifacts">
+            <div class="artifact artifact-1"></div>
+            <div class="artifact artifact-2"></div>
+            <div class="artifact artifact-3"></div>
+        </div>
+        
+        <!-- 플로팅 입자들 (별들) -->
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <!-- 중앙 허브 -->
+        <div class="central-hub">
+            <div class="hub-core"></div>
+        </div>
+        
         <div class="hero-content">
-            <h1>미래를 연결하는 기술</h1>
+            <h1><span id="typingText">미래를 연결하는 기술</span></h1>
             <p>혁신적인 솔루션으로 비즈니스의 디지털 트랜스포메이션을 이끌어가는 NEXUS TECH입니다.</p>
             <div class="hero-buttons">
                 <a href="#services" class="btn-primary">서비스 살펴보기</a>
@@ -616,6 +1232,112 @@
         </div>
     </section>
 
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>완성된 프로젝트</h2>
+                <p>다양한 분야의 고객들과 함께한 성공적인 프로젝트들을 확인해보세요.</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>글로벌 이커머스 플랫폼</h4>
+                        <p>월 100만 방문자를 처리하는 대규모 쇼핑몰 구축 및 최적화</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>핀테크 모바일 앱</h4>
+                        <p>실시간 결제 처리와 보안이 강화된 금융 서비스 앱</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Blockchain</span>
+                            <span class="tag">Security</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>AI 기반 추천 시스템</h4>
+                        <p>머신러닝을 활용한 개인화 추천 엔진 개발</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">BigData</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-image"></div>
+                    <div class="portfolio-content">
+                        <h4>스마트 팩토리 시스템</h4>
+                        <p>IoT와 AI를 결합한 지능형 제조 관리 솔루션</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">IoT</span>
+                            <span class="tag">AI</span>
+                            <span class="tag">Cloud</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2 style="color: white;">고객 후기</h2>
+                <p style="color: rgba(255,255,255,0.9);">함께 성장한 고객들의 생생한 후기를 들어보세요.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        "NEXUS TECH와 함께한 프로젝트는 정말 성공적이었습니다. 예상보다 빠른 개발 속도와 완벽한 품질에 매우 만족합니다."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">김</div>
+                        <div class="author-info">
+                            <h5>김대표</h5>
+                            <span>테크스타트업 CEO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        "기존 시스템을 완전히 혁신해주었습니다. 매출이 300% 증가했고, 고객 만족도도 크게 향상되었습니다."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">박</div>
+                        <div class="author-info">
+                            <h5>박부장</h5>
+                            <span>제조업체 IT팀장</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-content">
+                        "전문성과 책임감이 뛰어난 팀입니다. 복잡한 요구사항도 완벽하게 구현해주었고, 사후 지원도 훌륭합니다."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">이</div>
+                        <div class="author-info">
+                            <h5>이실장</h5>
+                            <span>대기업 디지털사업부</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-content fade-in">
@@ -662,21 +1384,111 @@
     </footer>
 
     <script>
-        // Smooth scrolling
+        // 로딩 화면
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').classList.add('hidden');
+            }, 1500);
+        });
+
+        // 타이핑 애니메이션
+        function typeWriter() {
+            const text = "미래를 연결하는 기술";
+            const element = document.getElementById('typingText');
+            element.innerHTML = '';
+            let i = 0;
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 50); // 100ms → 50ms로 변경
+                } else {
+                    element.classList.add('typing-text');
+                }
+            }
+            
+            setTimeout(type, 2000); // 로딩 후 시작
+        }
+
+        // 스크롤 인디케이터
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = scrollPercentage + '%';
+        }
+
+        // 카운터 애니메이션
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const targets = ['500+', '98%', '50+', '24/7'];
+            
+            counters.forEach((counter, index) => {
+                const target = targets[index];
+                const isPercentage = target.includes('%');
+                const isPlus = target.includes('+');
+                const numValue = parseInt(target);
+                
+                let current = 0;
+                const increment = numValue / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numValue) {
+                        current = numValue;
+                        clearInterval(timer);
+                    }
+                    
+                    let displayValue = Math.floor(current);
+                    if (isPercentage) displayValue += '%';
+                    if (isPlus && current >= numValue) displayValue += '+';
+                    if (target === '24/7') displayValue = '24/7';
+                    
+                    counter.textContent = displayValue;
+                    counter.classList.add('counting');
+                    
+                    setTimeout(() => counter.classList.remove('counting'), 100);
+                }, 50);
+            });
+        }
+
+        // 플로팅 채팅 버튼
+        document.getElementById('floatingChat').addEventListener('click', function() {
+            this.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+                alert('💬 안녕하세요! 프로젝트 상담을 도와드리겠습니다.\n\n📞 전화: 02-1234-5678\n📧 이메일: info@nexustech.co.kr\n\n지금 바로 연락주세요!');
+            }, 150);
+        });
+
+        // 포트폴리오 아이템 클릭 이벤트
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('h4').textContent;
+                alert(`🎯 ${title}\n\n이런 수준의 프로젝트를 개발해드릴 수 있습니다!\n상세한 상담을 원하시면 연락주세요.`);
+            });
+        });
+
+        // Smooth scrolling 강화
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerHeight = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Scroll animations
+        // 향상된 스크롤 애니메이션
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -686,16 +1498,26 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    // 통계 섹션이 보이면 카운터 애니메이션 시작
+                    if (entry.target.querySelector('.stat-number') && !entry.target.classList.contains('animated')) {
+                        entry.target.classList.add('animated');
+                        setTimeout(animateCounters, 300);
+                    }
                 }
             });
         }, observerOptions);
 
+        // 관찰 대상 요소들 등록
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
 
-        // Header background on scroll
+        // 스크롤 이벤트 리스너
         window.addEventListener('scroll', function() {
+            updateScrollProgress();
+            
+            // 헤더 배경 변경
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
                 header.style.background = 'rgba(15, 23, 42, 0.98)';
@@ -704,27 +1526,97 @@
             }
         });
 
-        // Form submission
+        // 폼 제출 강화
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('상담 요청이 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.');
+            
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            
+            button.textContent = '전송 중...';
+            button.style.opacity = '0.7';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.style.opacity = '1';
+                alert('✅ 상담 요청이 성공적으로 접수되었습니다!\n\n빠른 시일 내에 담당자가 연락드리겠습니다.\n감사합니다! 🙏');
+            }, 2000);
         });
 
-        // Add loading animation to buttons
+        // 버튼 로딩 애니메이션 강화
         document.querySelectorAll('.btn-primary, .btn-secondary, .cta-button').forEach(button => {
             button.addEventListener('click', function(e) {
                 if (this.classList.contains('loading')) return;
                 
-                const originalText = this.textContent;
-                this.classList.add('loading');
-                this.style.opacity = '0.8';
-                
-                setTimeout(() => {
-                    this.classList.remove('loading');
-                    this.style.opacity = '1';
-                }, 300);
+                // 폼 제출 버튼이 아닌 경우에만 애니메이션
+                if (this.type !== 'submit') {
+                    this.classList.add('loading');
+                    this.style.opacity = '0.8';
+                    
+                    setTimeout(() => {
+                        this.classList.remove('loading');
+                        this.style.opacity = '1';
+                    }, 300);
+                }
             });
+        });
+
+        // 초기화
+        window.addEventListener('load', function() {
+            typeWriter();
+            updateScrollProgress();
+        });
+
+        // 키보드 단축키 (개발자용 이스터에그)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey && e.key === 'D') {
+                alert('🚀 NEXUS TECH 개발팀이 만든 웹사이트입니다!\n\n이런 퀄리티의 사이트를 원하시나요?\n지금 바로 상담받아보세요!');
+            }
+        });
+
+        // 서비스 카드 균등 높이 조정 (추가 기능)
+        function adjustServiceCardHeights() {
+            const cards = document.querySelectorAll('.service-card');
+            if (window.innerWidth > 768) {
+                let maxHeight = 0;
+                
+                // 모든 카드의 높이를 초기화
+                cards.forEach(card => {
+                    card.style.height = 'auto';
+                });
+                
+                // 최대 높이 찾기
+                cards.forEach(card => {
+                    const height = card.offsetHeight;
+                    if (height > maxHeight) {
+                        maxHeight = height;
+                    }
+                });
+                
+                // 모든 카드를 최대 높이로 설정
+                cards.forEach(card => {
+                    card.style.height = maxHeight + 'px';
+                });
+            } else {
+                // 모바일에서는 자동 높이
+                cards.forEach(card => {
+                    card.style.height = 'auto';
+                });
+            }
+        }
+
+        // 창 크기 변경 시 높이 재조정
+        window.addEventListener('resize', function() {
+            clearTimeout(window.resizeTimer);
+            window.resizeTimer = setTimeout(adjustServiceCardHeights, 250);
+        });
+
+        // 페이지 로드 완료 시 높이 조정
+        window.addEventListener('load', function() {
+            setTimeout(adjustServiceCardHeights, 100);
         });
     </script>
 </body>
 </html>
+
+        
