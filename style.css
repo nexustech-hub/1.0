@@ -694,43 +694,6 @@ nav {
     margin-bottom: 1.5rem;
 }
 
-/* 모바일 전용 자간 + 폰트 조정 - 강력한 적용 */
-@media screen and (max-width: 768px) {
-    .about .about-text h2,
-    .about-text h2,
-    #about .about-text h2,
-    .about h2 {
-        font-size: 1.6rem !important;
-        letter-spacing: -0.4em !important;
-        min-width: 0 !important;
-        white-space: nowrap !important;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .about .about-text h2,
-    .about-text h2,
-    #about .about-text h2,
-    .about h2 {
-        font-size: 1.4rem !important;
-        letter-spacing: -0.45em !important;
-        min-width: 0 !important;
-        white-space: nowrap !important;
-    }
-}
-
-@media screen and (max-width: 380px) {
-    .about .about-text h2,
-    .about-text h2,
-    #about .about-text h2,
-    .about h2 {
-        font-size: 1.2rem !important;
-        letter-spacing: -0.5em !important;
-        min-width: 0 !important;
-        white-space: nowrap !important;
-    }
-}
-
 .about-text p {
     color: #64748b;
     font-size: clamp(1rem, 2.5vw, 1.1rem);
